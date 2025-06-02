@@ -4,7 +4,7 @@
 
 ### Autor 👤
 
-O projeto do MicroSaaS para Agendamento de Aulas foi criado pelo aluno do curso de Análise e Desenvolvimento de Sistemas no IFSP - Campus Araraquara abaixo:
+O projeto do Diário Inteligente foi criado pelo aluno do curso de Análise e Desenvolvimento de Sistemas no IFSP - Campus Araraquara abaixo:
 - **Gabriel de Pauli Santos**
 
 ## Sobre o projeto ℹ
