@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#001F3F"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nova Entrada"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:paddingBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Como você está hoje?"
+            android:textSize="18sp"
+            android:textColor="#ADBED4"
+            android:paddingBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/llHumor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:paddingBottom="16dp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/btnEmojiFeliz"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_emoji_excited"
+                android:contentDescription="Feliz" />
+
+            <ImageButton
+                android:id="@+id/btnEmojiTriste"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_emoji_sad"
+                android:contentDescription="Triste" />
+
+            <ImageButton
+                android:id="@+id/btnEmojiNeutro"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_emoji_neutral"
+                android:contentDescription="Neutro" />
+
+            <ImageButton
+                android:id="@+id/btnEmojiBravo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_emoji_angry"
+                android:contentDescription="Bravo" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mensagem do dia"
+            android:textSize="18sp"
+            android:textColor="#ADBED4"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/etMensagemDia"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:gravity="top|start"
+            android:background="@drawable/bg_edittext_rounded"
+            android:hint="Escreva algo sobre o seu dia..."
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#88FFFFFF"
+            android:maxLines="10" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:weightSum="3">
+
+            <ImageButton
+                android:id="@+id/btnAddFotoCamera"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_camera"
+                android:contentDescription="Adicionar foto da câmera"
+                android:padding="4dp" />
+
+            <ImageButton
+                android:id="@+id/btnAddFotoGaleria"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_gallery"
+                android:contentDescription="Adicionar foto da galeria"
+                android:padding="4dp" />
+
+            <ImageButton
+                android:id="@+id/btnTranscreverVoz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_mic"
+                android:contentDescription="Transcrever por voz"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSalvarEntrada"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Salvar Entrada"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:backgroundTint="#4A90E2"
+            android:background="@drawable/bg_botao_salvar"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>
