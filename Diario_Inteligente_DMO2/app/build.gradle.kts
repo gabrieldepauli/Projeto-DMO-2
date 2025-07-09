@@ -49,6 +49,8 @@ dependencies {
     implementation ("androidx.biometric:biometric:1.2.0-alpha04")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("com.google.android.material:material:1.8.0")
+    implementation(libs.androidx.exifinterface)
 
     val camerax_version = "1.5.0-beta01"
     implementation("androidx.camera:camera-core:${camerax_version}")

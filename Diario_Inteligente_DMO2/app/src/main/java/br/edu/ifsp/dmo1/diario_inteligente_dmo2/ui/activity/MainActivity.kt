@@ -35,6 +35,15 @@ class MainActivity : AppCompatActivity() {
 
         executor = ContextCompat.getMainExecutor(this)
 
+        binding.btnTentarNovamente.setOnClickListener {
+            binding.btnTentarNovamente.visibility = android.view.View.GONE
+            biometricPrompt.authenticate(promptInfo)
+        }
+
+        verificarBiometriaEDisparar()
+    }
+
+    private fun verificarBiometriaEDisparar() {
         val biometricManager = BiometricManager.from(this)
         when (biometricManager.canAuthenticate(
             BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
@@ -64,8 +73,15 @@ class MainActivity : AppCompatActivity() {
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(applicationContext, "Erro de autenticação: $errString", Toast.LENGTH_SHORT).show()
-                    finish()
+
+                    if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON ||
+                        errorCode == BiometricPrompt.ERROR_USER_CANCELED ||
+                        errorCode == BiometricPrompt.ERROR_CANCELED) {
+                        Toast.makeText(applicationContext, "Autenticação cancelada", Toast.LENGTH_SHORT).show()
+                        binding.btnTentarNovamente.visibility = android.view.View.VISIBLE
+                    } else {
+                        Toast.makeText(applicationContext, "Erro: $errString", Toast.LENGTH_SHORT).show()
+                    }
                 }
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
@@ -83,4 +99,5 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
+
 }

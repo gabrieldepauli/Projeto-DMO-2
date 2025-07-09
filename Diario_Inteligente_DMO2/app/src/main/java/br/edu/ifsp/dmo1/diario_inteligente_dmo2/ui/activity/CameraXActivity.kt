@@ -22,7 +22,7 @@ import java.io.File
 
 class CameraXActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityCameraXactivityBinding
+    private lateinit var binding: ActivityCameraXactivityBinding
     private lateinit var imageCapture: ImageCapture
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +37,12 @@ class CameraXActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this,
                 arrayOf(Manifest.permission.CAMERA), 1001)
         }
+
         binding.btnCapture.setOnClickListener {
             capturarFoto()
         }
-
     }
+
     private fun iniciarCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
 
@@ -57,10 +58,12 @@ class CameraXActivity : AppCompatActivity() {
                 this, cameraSelector, preview, imageCapture
             )
         }, ContextCompat.getMainExecutor(this))
-
     }
+
     private fun capturarFoto() {
-        val pasta = File(externalCacheDir, "novaCaptura.jpg")
+        val fileName = "captura_${System.currentTimeMillis()}.jpg"
+        val pasta = File(externalCacheDir, fileName)
+
         val outputFileOptions = ImageCapture.OutputFileOptions.Builder(pasta).build()
 
         imageCapture.takePicture(outputFileOptions, ContextCompat.getMainExecutor(this),
@@ -83,29 +86,22 @@ class CameraXActivity : AppCompatActivity() {
                     Toast.makeText(this@CameraXActivity, "Erro: ${exception.message}", Toast.LENGTH_SHORT).show()
                 }
             })
-
     }
+
     private fun imageProxyToBitmap(image: ImageProxy): Bitmap {
         val planeProxy = image.planes[0]
         val buffer = planeProxy.buffer
         val bytes = ByteArray(buffer.remaining())
-
         buffer.get(bytes)
-
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions,
-            grantResults)
-
-        if (requestCode == 1001 && grantResults.firstOrNull() ==
-            PackageManager.PERMISSION_GRANTED) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1001 && grantResults.firstOrNull() == PackageManager.PERMISSION_GRANTED) {
             iniciarCamera()
         } else {
-            Toast.makeText(this, "Permissão da câmera negada",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Permissão da câmera negada", Toast.LENGTH_SHORT).show()
         }
-
     }
 }

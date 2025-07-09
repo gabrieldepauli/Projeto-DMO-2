@@ -1,6 +1,7 @@
 package br.edu.ifsp.dmo1.diario_inteligente_dmo2.ui.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -20,13 +21,20 @@ class NovaEntradaViewModel(application: Application) : AndroidViewModel(applicat
 
     fun salvarEntrada(texto: String, humor: String, fotoUri: String = "") {
         val dataAtual = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date())
-        val entrada = Diario(data = dataAtual, texto = texto, humor = humor, fotoUri = fotoUri)
+
+        val entrada = Diario(
+            data = dataAtual,
+            texto = texto.trim(),
+            humor = humor,
+            fotoUri = fotoUri
+        )
+
+        Log.d("NovaEntradaViewModel", "Salvando entrada: $entrada")
 
         viewModelScope.launch {
-            diarioDao.inserir(entrada)
+            val id = diarioDao.inserir(entrada)
+            Log.d("NovaEntradaViewModel", "Entrada salva com ID: $id")
             _entradaSalva.postValue(true)
         }
     }
-
 }
-
