@@ -17,8 +17,14 @@ O projeto do Diário Inteligente foi criado pelo aluno do curso de Análise e De
 
 ### Tecnologias utilizadas 👩‍💻
 
+- **Kotlin:** linguagem principal para desenvolvimento Android.
+- **Android Architecture Components:** ViewModel e LiveData para gerenciamento de estado e comunicação UI-dados.
+- **Room (SQLite):** persistência local eficiente e segura.
+- **Coroutines:** para operações assíncronas sem bloquear a UI.
+- **CameraX e APIs de Imagem:** captura e manipulação de fotos.
+- **Reconhecimento de Voz (SpeechRecognizer):** transcrição de áudio para texto.
+- **Data Binding / View Binding:** para facilitar o acesso seguro às views.
 - **Aplicativos:** Android Studio.
-
 
 ## Sobre o projeto ℹ️
 
