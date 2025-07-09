@@ -1,6 +1,14 @@
-# Projeto DMO 2 - Diário Inteligente
+# NoteGuard - Diário Inteligente
 
 ## Descrição do Projeto
+
+Este projeto é um Diário Inteligente que oferece uma experiência completa para registrar o seu dia a dia. Com ele, o usuário pode:
+- Adicionar anotações diárias com texto livre;
+- Capturar ou selecionar fotos para ilustrar suas entradas;
+- Monitorar seu humor por meio de ícones intuitivos;
+- Transcrever voz em texto para facilitar o registro das memórias e sentimentos.
+
+O app foi desenvolvido com foco em usabilidade, permitindo que você documente suas experiências de forma prática e personalizada.
 
 ### Autor 👤
 
