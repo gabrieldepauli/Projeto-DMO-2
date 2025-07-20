@@ -28,4 +28,6 @@ O projeto do Diário Inteligente foi criado pelo aluno do curso de Análise e De
 
 ## Sobre o projeto ℹ️
 
-Aplicativo Android desenvolvido em Kotlin, com a ideia de um app que utilize os sensores do dispositovo móvel.
+O NoteGuard é um aplicativo Android desenvolvido em Kotlin que une tecnologia e bem-estar pessoal. Ele foi idealizado com o objetivo de explorar os recursos dos dispositivos móveis — como câmera, microfone e sensores — para oferecer uma plataforma moderna de registro pessoal.
+
+Mais do que um simples diário, o NoteGuard permite registrar suas emoções, capturar momentos com imagens, transcrever falas automaticamente e acompanhar sua evolução ao longo do tempo. Com uma interface amigável e recursos inteligentes, o app transforma o hábito de escrever em algo interativo, prático e significativo.
