@@ -1,6 +1,6 @@
 # NoteGuard - Diário Inteligente
 
-## Descrição do Projeto
+## Descrição do Projeto 💡
 
 Este projeto é um Diário Inteligente que oferece uma experiência completa para registrar o seu dia a dia. Com ele, o usuário pode:
 - Adicionar anotações diárias com texto livre;
@@ -32,7 +32,7 @@ O NoteGuard é um aplicativo Android desenvolvido em Kotlin que une tecnologia e
 
 Mais do que um simples diário, o NoteGuard permite registrar suas emoções, capturar momentos com imagens, transcrever falas automaticamente e acompanhar sua evolução ao longo do tempo. Com uma interface amigável e recursos inteligentes, o app transforma o hábito de escrever em algo interativo, prático e significativo.
 
-## Vídeo Demonstrativo (Shorts - Youtube)
+## Vídeo Demonstrativo (Shorts - Youtube) 🎥
 
 Clique na imagem para assistir!
 
