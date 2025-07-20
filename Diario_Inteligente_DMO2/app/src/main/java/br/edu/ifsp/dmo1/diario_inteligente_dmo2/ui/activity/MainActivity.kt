@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private lateinit var executor: Executor
 
+    private var autenticando = false  // controla se está autenticando para evitar múltiplas chamadas
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,10 +39,22 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnTentarNovamente.setOnClickListener {
             binding.btnTentarNovamente.visibility = android.view.View.GONE
-            biometricPrompt.authenticate(promptInfo)
+            autenticar()
         }
 
-        verificarBiometriaEDisparar()
+        setupBiometricPrompt()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!autenticando) {
+            autenticar()
+        }
+    }
+
+    private fun autenticar() {
+        autenticando = true
+        biometricPrompt.authenticate(promptInfo)
     }
 
     private fun verificarBiometriaEDisparar() {
@@ -48,8 +62,8 @@ class MainActivity : AppCompatActivity() {
         when (biometricManager.canAuthenticate(
             BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL)) {
             BiometricManager.BIOMETRIC_SUCCESS -> {
-                setupBiometricPrompt()
-                biometricPrompt.authenticate(promptInfo)
+                // setupBiometricPrompt() já foi chamado no onCreate
+                // biometricPrompt.authenticate(promptInfo) será chamado no onResume via autenticar()
             }
             BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
                 Toast.makeText(this, "Dispositivo sem hardware biométrico", Toast.LENGTH_LONG).show()
@@ -74,6 +88,8 @@ class MainActivity : AppCompatActivity() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
 
+                    autenticando = false
+
                     if (errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON ||
                         errorCode == BiometricPrompt.ERROR_USER_CANCELED ||
                         errorCode == BiometricPrompt.ERROR_CANCELED) {
@@ -86,8 +102,10 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(applicationContext, "Autenticação aprovada! Bem-vindo!", Toast.LENGTH_SHORT).show()
 
+                    autenticando = false
+
+                    Toast.makeText(applicationContext, "Autenticação aprovada! Bem-vindo!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@MainActivity, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -99,5 +117,4 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
-
 }

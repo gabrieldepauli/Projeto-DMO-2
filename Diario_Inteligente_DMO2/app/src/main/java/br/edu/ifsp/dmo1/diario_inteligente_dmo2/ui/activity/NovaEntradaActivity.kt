@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import br.edu.ifsp.dmo1.diario_inteligente_dmo2.App
 import br.edu.ifsp.dmo1.diario_inteligente_dmo2.databinding.ActivityNovaEntradaBinding
 import br.edu.ifsp.dmo1.diario_inteligente_dmo2.ui.viewmodel.NovaEntradaViewModel
 import androidx.exifinterface.media.ExifInterface
@@ -101,6 +102,8 @@ class NovaEntradaActivity : AppCompatActivity() {
         galleryResultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
+            (application as App).ignorarVerificacaoFoco = false
+
             if (result.resultCode == RESULT_OK) {
                 val data: Intent? = result.data
                 val selectedImageUri: Uri? = data?.data
@@ -144,6 +147,8 @@ class NovaEntradaActivity : AppCompatActivity() {
     }
 
     private fun abrirGaleria() {
+        (application as App).ignorarVerificacaoFoco = true
+
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         galleryResultLauncher.launch(intent)

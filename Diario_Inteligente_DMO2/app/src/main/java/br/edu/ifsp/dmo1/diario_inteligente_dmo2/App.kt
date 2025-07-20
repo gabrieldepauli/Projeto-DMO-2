@@ -11,17 +11,21 @@ class App : Application(), Application.ActivityLifecycleCallbacks {
     private var atividadeVisivel: Boolean = false
     private var appFoiBackground = false
 
+    var ignorarVerificacaoFoco: Boolean = false
+
     override fun onCreate() {
         super.onCreate()
         registerActivityLifecycleCallbacks(this)
     }
 
     override fun onActivityResumed(activity: Activity) {
-        if (appFoiBackground && activity !is MainActivity) {
+        if (appFoiBackground) {
             appFoiBackground = false
-            val intent = Intent(activity, MainActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            activity.startActivity(intent)
+            if (activity !is MainActivity) {
+                val intent = Intent(activity, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                activity.startActivity(intent)
+            }
         }
         atividadeVisivel = true
     }
@@ -31,7 +35,7 @@ class App : Application(), Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityStopped(activity: Activity) {
-        if (!atividadeVisivel) {
+        if (!atividadeVisivel && !ignorarVerificacaoFoco) {
             appFoiBackground = true
         }
     }
