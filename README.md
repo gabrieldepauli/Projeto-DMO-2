@@ -34,4 +34,6 @@ Mais do que um simples diário, o NoteGuard permite registrar suas emoções, ca
 
 ## Vídeo Demonstrativo (Shorts - Youtube)
 
+Clique na imagem para assistir!
+
 [![Assista ao vídeo](https://img.youtube.com/vi/ioUlFY9JJlg/maxresdefault.jpg)](https://www.youtube.com/watch?v=ioUlFY9JJlg)
