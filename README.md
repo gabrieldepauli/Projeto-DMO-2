@@ -10,8 +10,6 @@ Este projeto é um Diário Inteligente que oferece uma experiência completa par
 
 O app foi desenvolvido com foco em usabilidade, permitindo que você documente suas experiências de forma prática e personalizada.
 
-##
-
 ### Autor 👤
 
 O projeto do Diário Inteligente foi criado pelo aluno do curso de Análise e Desenvolvimento de Sistemas no IFSP - Campus Araraquara abaixo:
